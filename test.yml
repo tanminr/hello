@@ -1,7 +1,11 @@
-﻿- name: Hello World Test
+- name: Hello World Test
   hosts: all
   gather_facts: no
   tasks:
     - name: Get Host Time
       shell: date
       ignore_errors: True
+      register: check
+
+    - debug:
+        var: check.stdout
